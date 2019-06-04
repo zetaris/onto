@@ -1,0 +1,154 @@
+# baseURI: http://seek.com/fin_group_rev_tfs
+# imports: http://onto.zetaris.com/tfs
+# imports: http://seek.com/fin_group_rev_ldm
+
+@prefix : <http://seek.com/fin_group_rev_tfs#> .
+@prefix fin_group_rev_ldm: <http://seek.com/fin_group_rev_ldm#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tfs: <http://onto.zetaris.com/tfs#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://seek.com/fin_group_rev_tfs>
+  rdf:type owl:Ontology ;
+  owl:imports <http://onto.zetaris.com/tfs> ;
+  owl:imports <http://seek.com/fin_group_rev_ldm> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#116000000048.Code>
+  rdf:type tfs:Source_Field ;
+  rdfs:label "Code"^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Currency>
+  rdf:type tfs:Source_Field ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Consolidation Currency"^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Group>
+  rdf:type tfs:Source_Field ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Consolidation Group"^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Group_Code>
+  rdf:type tfs:Source_Field ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Consolidation Group Code"^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Unit_Generated>
+  rdf:type tfs:Source_Field ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Consolidation Unit Generated"^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_hierarchy>
+  rdf:type tfs:Source_Field ;
+  rdfs:label "Consolidation hierarchy"^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_unit_code>
+  rdf:type tfs:Source_Field ;
+  rdfs:label "Consolidation unit code"^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#116000000048.Item_>
+  rdf:type tfs:Source_Field ;
+  rdfs:label "Item "^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#116000000048.Parent>
+  rdf:type tfs:Source_Field ;
+  rdfs:label "Parent"^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#116000000048.Reporting_unit>
+  rdf:type tfs:Source_Field ;
+  rdfs:label "Reporting unit"^^xsd:string ;
+.
+:Anaplan
+  rdf:type tfs:Source_System ;
+  rdfs:label "Anaplan"^^xsd:string ;
+.
+:TFS_1_1
+  rdf:type tfs:TFS_1 ;
+  tfs:from_Source <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Group_Code> ;
+  tfs:to_Target fin_group_rev_ldm:Consolidation_Group_Code ;
+  rdfs:comment """UPSERT RULE based upon:
+116000000048.Consolidation Group Code 
+Group by 116000000048.Consolidation Group Code
+116000000048.Consolidation Group
+116000000048.Consolidation currency and ensure that there is only one grouping for the 116000000048.Consolidation Group Code. If so map 116000000048.Consolidation Group Code to the target.
+ie Select Consolidation Group Code from (select Consolidation Group Code,Consolidation Group,Consolidation currency from 116000000048) group by Consolidation Group Code where count(*) =1"""^^xsd:string ;
+  rdfs:label "TFS 1 1"^^xsd:string ;
+.
+:TFS_1_2
+  rdf:type tfs:TFS_1 ;
+  tfs:from_Source <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Unit_Generated> ;
+  tfs:to_Target fin_group_rev_ldm:Consolidation_Group_Reporting_Unit_Association_Code ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "TFS 1 2"^^xsd:string ;
+.
+:TFS_2_1
+  rdf:type tfs:TFS_2 ;
+  tfs:from_Source <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Group_Code> ;
+  tfs:to_Target fin_group_rev_ldm:Consolidation_Group_Reporting_Unit_Consolidation_Group_Code ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "TFS 2 1"^^xsd:string ;
+.
+:TFS_2_2
+  rdf:type tfs:TFS_2 ;
+  tfs:from_Source <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Group_Code> ;
+  tfs:to_Target fin_group_rev_ldm:Consolidation_Group_Reporting_Unit_Reporting_Unit_Code ;
+  rdfs:comment "Validate REPORTINGUNIT.reporting_unit_code=116000000048.Reporting unit"^^xsd:string ;
+  rdfs:label "TFS 2 2"^^xsd:string ;
+.
+:TFS_3_1
+  rdf:type tfs:TFS_3 ;
+  tfs:from_Source <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Group_Code> ;
+  tfs:to_Target fin_group_rev_ldm:Consolidation_Group_Code ;
+  rdfs:comment "116000000048.Consolidation Group Code"^^xsd:string ;
+  rdfs:label "TFS 3 1"^^xsd:string ;
+.
+:TFS_3_2
+  rdf:type tfs:TFS_3 ;
+  tfs:from_Source <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Group> ;
+  tfs:to_Target fin_group_rev_ldm:Consolidation_Group_Name ;
+  rdfs:comment "116000000048.Consolidation Group"^^xsd:string ;
+  rdfs:label "TFS 3 2"^^xsd:string ;
+.
+:TFS_3_3
+  rdf:type tfs:TFS_3 ;
+  tfs:from_Source <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Currency> ;
+  tfs:to_Target fin_group_rev_ldm:Consolidation_Group_Currency ;
+  rdfs:comment "116000000048.Consolidation currency"^^xsd:string ;
+  rdfs:label "TFS 3 3"^^xsd:string ;
+.
+:TFS_3_4
+  rdf:type tfs:TFS_3 ;
+  tfs:from_Source <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Unit_Generated> ;
+  tfs:to_Target fin_group_rev_ldm:Consolidation_Group_Reporting_Unit_Association_Code ;
+  rdfs:comment "116000000048.Consolidation Unit Generated"^^xsd:string ;
+  rdfs:label "TFS 3 4"^^xsd:string ;
+.
+:TFS_3_5
+  rdf:type tfs:TFS_3 ;
+  tfs:from_Source <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Group_Code> ;
+  tfs:to_Target fin_group_rev_ldm:Consolidation_Group_Reporting_Unit_Consolidation_Group_Code ;
+  rdfs:comment "Consolidation_group.Consolidation_Group_code"^^xsd:string ;
+  rdfs:label "TFS 3 5"^^xsd:string ;
+.
+:TFS_3_6
+  rdf:type tfs:TFS_3 ;
+  tfs:from_Source <http://seek.com/fin_group_rev_tfs#116000000048.Reporting_unit> ;
+  tfs:to_Target fin_group_rev_ldm:Consolidation_Group_Reporting_Unit_Reporting_Unit_Code ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "TFS 3 6"^^xsd:string ;
+.
+<http://seek.com/fin_group_rev_tfs#file.116000000048>
+  rdf:type tfs:Source_File_Type ;
+  tfs:hasField <http://seek.com/fin_group_rev_tfs#116000000048.Code> ;
+  tfs:hasField <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Group> ;
+  tfs:hasField <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Group_Code> ;
+  tfs:hasField <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_Unit_Generated> ;
+  tfs:hasField <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_hierarchy> ;
+  tfs:hasField <http://seek.com/fin_group_rev_tfs#116000000048.Consolidation_unit_code> ;
+  tfs:hasField <http://seek.com/fin_group_rev_tfs#116000000048.Item_> ;
+  tfs:hasField <http://seek.com/fin_group_rev_tfs#116000000048.Parent> ;
+  tfs:hasField <http://seek.com/fin_group_rev_tfs#116000000048.Reporting_unit> ;
+  rdfs:label "file.116000000048"^^xsd:string ;
+.

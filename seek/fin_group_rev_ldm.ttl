@@ -1,0 +1,58 @@
+# baseURI: http://seek.com/fin_group_rev_ldm
+# imports: http://onto.zetaris.com/ldm
+# imports: http://seek.com/fin_group_rev_cdm
+
+@prefix : <http://seek.com/fin_group_rev_ldm#> .
+@prefix ldm: <http://onto.zetaris.com/ldm#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix seek_cdm: <http://seek.com/fin_group_rev_cdm#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+seek_cdm:Consolidation-Group
+  ldm:hasAttribute :Consolidation_Group_Code ;
+  ldm:hasAttribute :Consolidation_Group_Currency ;
+  ldm:hasAttribute :Consolidation_Group_Name ;
+.
+seek_cdm:Consolidation-Group_Reporting-Unit_Association
+  ldm:hasAttribute :Consolidation_Group_Reporting_Unit_Association_Code ;
+  ldm:hasAttribute :Consolidation_Group_Reporting_Unit_Consolidation_Group_Code ;
+  ldm:hasAttribute :Consolidation_Group_Reporting_Unit_Reporting_Unit_Code ;
+.
+<http://seek.com/fin_group_rev_ldm>
+  rdf:type owl:Ontology ;
+  owl:imports <http://onto.zetaris.com/ldm> ;
+  owl:imports <http://seek.com/fin_group_rev_cdm> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:Consolidation_Group_Code
+  rdf:type ldm:Attribute ;
+  rdfs:label "Consolidation Group Code"^^xsd:string ;
+.
+:Consolidation_Group_Currency
+  rdf:type ldm:Attribute ;
+  rdfs:label "Consolidation Group Currency"^^xsd:string ;
+.
+:Consolidation_Group_Name
+  rdf:type ldm:Attribute ;
+  rdfs:label "Consolidation Group Name"^^xsd:string ;
+.
+:Consolidation_Group_Reporting_Unit_Association_Code
+  rdf:type ldm:Attribute ;
+  rdfs:label "Consolidation Group Reporting Unit Association Code"^^xsd:string ;
+.
+:Consolidation_Group_Reporting_Unit_Consolidation_Group_Code
+  rdf:type ldm:Attribute ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Consolidation Group Reporting Unit-Consolidation Group Code"^^xsd:string ;
+.
+:Consolidation_Group_Reporting_Unit_Reporting_Unit_Code
+  rdf:type ldm:Attribute ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Consolidation Group Reporting Unit Reporting Unit Code"^^xsd:string ;
+.
+:Reporting_Unit_Code
+  rdf:type ldm:Attribute ;
+  rdfs:label "Reporting Unit Code"^^xsd:string ;
+.

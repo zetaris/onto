@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:cdm="http://onto.zetaris.com/cdm#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:ldm="http://onto.zetaris.com/ldm#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://onto.zetaris.com/tfs#"
+  xml:base="http://onto.zetaris.com/tfs">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://onto.zetaris.com/ldm"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="TFS_3">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TFS 3</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Transformation_Rule"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Source_System_Of_Record">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Source System Of Record</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Source_System_Of_Capture">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Source System Of Capture</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Source_System">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Source System</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="TFS_1">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TFS 1</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Transformation_Rule"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Source_Field">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Source Field</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Transformation_Rule">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Transformation Rule</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Source_File_Type">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Source File Type</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="TFS_2">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TFS 2</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Transformation_Rule"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="from_Source">
+    <rdfs:range rdf:resource="#Source_Field"/>
+    <rdfs:domain rdf:resource="#Transformation_Rule"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >from Source</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="to_Target">
+    <rdfs:range rdf:resource="http://onto.zetaris.com/ldm#Attribute"/>
+    <rdfs:domain rdf:resource="#Transformation_Rule"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >to Target</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasField">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has field</rdfs:label>
+    <rdfs:domain rdf:resource="#Source_File_Type"/>
+    <rdfs:range rdf:resource="#Source_Field"/>
+  </owl:ObjectProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

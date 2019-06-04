@@ -1,0 +1,231 @@
+# baseURI: http://seek.com/fin_group_rev_cdm
+# imports: http://onto.zetaris.com/cdm
+
+@prefix : <http://seek.com/fin_group_rev_cdm#> .
+@prefix cdm: <http://onto.zetaris.com/cdm#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://seek.com/fin_group_rev_cdm>
+  rdf:type owl:Ontology ;
+  owl:imports <http://onto.zetaris.com/cdm> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:Accounting_Period
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:hasOneToZeroOrManyAssociationWith :Company-Group_Actual_Revenue_Item ;
+  cdm:hasOneToZeroOrManyAssociationWith :Company-Group_Planned_Revenue_Item ;
+  rdfs:label "Accounting Period"^^xsd:string ;
+.
+:Company-Group_Actual_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  rdfs:label "Company-Group Actual Revenue Item"^^xsd:string ;
+.
+:Company-Group_Currency
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:IsASubtypeOf :Currency ;
+  cdm:hasOneToManyAssociationWith :Currency_Exchange ;
+  rdfs:label "Company-Group Currency"^^xsd:string ;
+.
+:Company-Group_Planned_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  rdfs:label "Company-Group Planned Revenue Item"^^xsd:string ;
+.
+:Consolidation-Group
+  rdf:type cdm:Classification_Data_Entity ;
+  cdm:hasOneToManyAssociationWith :Consolidation-Group_Reporting-Unit_Association ;
+  cdm:hasOneToZeroOrManyAssociationWith :Consolidation-Group_Adjustment_Planned_Revenue_Item ;
+  cdm:hasOneToZeroOrManyAssociationWith :Consolitation-Group_Adjustment_Actual_Revenue_Item ;
+  rdfs:label "Consolidation-Group"^^xsd:string ;
+.
+:Consolidation-Group_Adjustment_Planned_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Company-Group_Planned_Revenue_Item ;
+  cdm:hasExclusionContraintWith :Local_Adjustment_Planned_Revenue_Item ;
+  cdm:hasExclusionContraintWith :Reporting-Unit_Planned_Revenue_Item ;
+  rdfs:label "Consolidation-Group Adjustment Planned Revenue Item"^^xsd:string ;
+.
+:Consolidation-Group_Reporting-Unit_Association
+  rdf:type cdm:Classification_Data_Entity ;
+  rdfs:label "Consolidation-Group Reporting-Unit Association"^^xsd:string ;
+.
+:Consolitation-Group_Adjustment_Actual_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Company-Group_Actual_Revenue_Item ;
+  cdm:hasExclusionContraintWith :Local_Adjustment_Actual_Revenue_Item ;
+  rdfs:label "Consolitation-Group Adjustment Actual Revenue Item"^^xsd:string ;
+.
+:Currency
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  rdfs:label "Currency"^^xsd:string ;
+.
+:Currency_Exchange
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  rdfs:label "Currency Exchange"^^xsd:string ;
+.
+:Currency_Exchange_Conversion_Method
+  rdf:type cdm:Entity ;
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:hasOneToManyAssociationWith :Currency_Exchange ;
+  cdm:hasOneToZeroOrManyAssociationWith :GL_Account ;
+  rdfs:label "Currency Exchange Conversion Method"^^xsd:string ;
+.
+:Domestic_Actual_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Company-Group_Actual_Revenue_Item ;
+  cdm:hasExclusionContraintWith :Non-Domestic_Actual_Revenue_Item ;
+  rdfs:label "Domestic Actual Revenue Item"^^xsd:string ;
+.
+:Domestic_Planned_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Company-Group_Planned_Revenue_Item ;
+  cdm:hasExclusionContraintWith :Non-Domestic_Planned_Revenue_Item ;
+  rdfs:label "Domestic Planned Revenue Item"^^xsd:string ;
+.
+:GL_Account
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:hasOneToManyAssociationWith :GL_Account_Status ;
+  cdm:hasOneToZeroOrManyAssociationWith :Company-Group_Actual_Revenue_Item ;
+  cdm:hasOneToZeroOrManyAssociationWith :Company-Group_Planned_Revenue_Item ;
+  rdfs:label "GL Account"^^xsd:string ;
+.
+:GL_Account_Status
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  rdfs:label "GL Account Status"^^xsd:string ;
+.
+:GL_Account_Status_Type
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:hasOneToZeroOrManyAssociationWith :GL_Account_Status ;
+  rdfs:label "GL Account Status Type"^^xsd:string ;
+.
+:GL_Account_Type
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:hasOneToZeroOrManyAssociationWith :GL_Account ;
+  rdfs:label "GL Account Type"^^xsd:string ;
+.
+:Journal_Type
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:hasOneToZeroOrManyAssociationWith :Company-Group_Actual_Revenue_Item ;
+  cdm:hasOneToZeroOrManyAssociationWith :Company-Group_Planned_Revenue_Item ;
+  rdfs:label "Journal Type"^^xsd:string ;
+.
+:Local_Adjustment_Actual_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Company-Group_Actual_Revenue_Item ;
+  cdm:hasExclusionContraintWith :Reporting-Unit_Actual_Revenue_Item ;
+  rdfs:label "Local Adjustment Actual Revenue Item"^^xsd:string ;
+.
+:Local_Adjustment_Planned_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Company-Group_Planned_Revenue_Item ;
+  rdfs:label "Local Adjustment Planned Revenue Item"^^xsd:string ;
+.
+:Local_Currency
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:IsASubtypeOf :Currency ;
+  cdm:hasOneToManyAssociationWith :Currency_Exchange ;
+  rdfs:label "Local Currency"^^xsd:string ;
+.
+:Non-Domestic_Actual_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Company-Group_Actual_Revenue_Item ;
+  rdfs:label "Non-Domestic Actual Revenue Item"^^xsd:string ;
+.
+:Non-Domestic_Planned_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Company-Group_Planned_Revenue_Item ;
+  rdfs:label "Non-Domestic Planned Revenue Item"^^xsd:string ;
+.
+:Planned_Revenue_Item_Version_Type
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:hasOneToZeroOrManyAssociationWith :Company-Group_Planned_Revenue_Item ;
+  rdfs:label "Planned Revenue Item Version Type"^^xsd:string ;
+.
+:Planning_Period
+  rdf:type cdm:Classification_Data_Entity ;
+  cdm:hasOneToZeroOrManyAssociationWith :Company-Group_Planned_Revenue_Item ;
+  rdfs:label "Planning Period"^^xsd:string ;
+.
+:Primary_Company-Group_GL_Account_Type
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:IsASubtypeOf :GL_Account_Type ;
+  cdm:hasOneToManyAssociationWith :Secondary_Company-Group_GL_Account_Type ;
+  rdfs:label "Primary Company-Group GL Account Type"^^xsd:string ;
+.
+:Primary_Journal_Type
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:IsASubtypeOf :Journal_Type ;
+  cdm:hasOneToManyAssociationWith :Secondary_Journal_Type ;
+  rdfs:label "Primary Journal Type"^^xsd:string ;
+.
+:Primary_Reporting-Unit_Group
+  rdf:type cdm:Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Reporting-Unit_Group ;
+  cdm:hasOneToManyAssociationWith :Secondary_Reporting-Unit_Group ;
+  rdfs:label "Primary Reporting-Unit Group"^^xsd:string ;
+.
+:Reporting-Unit_Actual_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Company-Group_Actual_Revenue_Item ;
+  rdfs:label "Reporting-Unit Actual Revenue Item"^^xsd:string ;
+.
+:Reporting-Unit_Allocated_Hiearchy
+  rdf:type cdm:Classification_Data_Entity ;
+  rdfs:label "Reporting-Unit Allocated Hiearchy"^^xsd:string ;
+.
+:Reporting-Unit_Group
+  rdf:type cdm:Classification_Data_Entity ;
+  cdm:hasOneToManyAssociationWith :Reporting-Unit_Allocated_Hiearchy ;
+  rdfs:label "Reporting-Unit Group"^^xsd:string ;
+.
+:Reporting-Unit_Hierarchy
+  rdf:type cdm:Classification_Data_Entity ;
+  cdm:hasOneToManyAssociationWith :Reporting-Unit_Group ;
+  rdfs:label "Reporting-Unit Hierarchy"^^xsd:string ;
+.
+:Reporting-Unit_Planned_Revenue_Item
+  rdf:type cdm:Non_Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Company-Group_Planned_Revenue_Item ;
+  rdfs:label "Reporting-Unit Planned Revenue Item"^^xsd:string ;
+.
+:Reporting_Unit
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:hasOneToZeroOrManyAssociationWith :Company-Group_Actual_Revenue_Item ;
+  cdm:hasOneToZeroOrManyAssociationWith :Company-Group_Planned_Revenue_Item ;
+  cdm:hasOneToZeroOrManyAssociationWith :Consolidation-Group_Reporting-Unit_Association ;
+  cdm:hasOneToZeroOrManyAssociationWith :Reporting-Unit_Allocated_Hiearchy ;
+  rdfs:label "Reporting Unit"^^xsd:string ;
+.
+:Secondary_Company-Group_GL_Account_Type
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:IsASubtypeOf :GL_Account_Type ;
+  rdfs:label "Secondary Company-Group GL Account Type"^^xsd:string ;
+.
+:Secondary_Journal_Type
+  rdf:type cdm:Classification_Data_Entity ;
+  rdf:type cdm:Entity ;
+  cdm:IsASubtypeOf :Journal_Type ;
+  rdfs:label "Secondary Journal Type"^^xsd:string ;
+.
+:Secondary_Reporting-Unit_Group
+  rdf:type cdm:Classification_Data_Entity ;
+  cdm:IsASubtypeOf :Reporting-Unit_Group ;
+  rdfs:label "Secondary Reporting-Unit Group"^^xsd:string ;
+.

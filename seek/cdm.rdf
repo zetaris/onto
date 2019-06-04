@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://onto.zetaris.com/cdm#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://onto.zetaris.com/cdm">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Classification_Data_Entity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Classification Data Entity</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Entity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Entity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Entity</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Non_Classification_Data_Entity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Non Classification Data Entity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Entity"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasOneToManyAssociationWith">
+    <rdfs:range rdf:resource="#Entity"/>
+    <rdfs:domain rdf:resource="#Entity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has one to many association with</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasZeroOrOneToManyAssociationWith">
+    <rdfs:range rdf:resource="#Entity"/>
+    <rdfs:domain rdf:resource="#Entity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has zero or one to many association with</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasOneToZeroOrManyAssociationWith">
+    <rdfs:range rdf:resource="#Entity"/>
+    <rdfs:domain rdf:resource="#Entity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has one to zero or many association with</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="IsASubtypeOf">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Is ASubtype of</rdfs:label>
+    <rdfs:domain rdf:resource="#Entity"/>
+    <rdfs:range rdf:resource="#Entity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasZeroOrOneToZeroOrManyAssociationWith">
+    <rdfs:range rdf:resource="#Entity"/>
+    <rdfs:domain rdf:resource="#Entity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has zero or one to zero or many association with</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:SymmetricProperty rdf:ID="hasExclusionContraintWith">
+    <rdfs:range rdf:resource="#Entity"/>
+    <rdfs:domain rdf:resource="#Entity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has exclusion contraint with</rdfs:label>
+  </owl:SymmetricProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->
